@@ -1,219 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upgrade Tesla Giveaway</title>
-<meta name="description" content="Enter the Upgrade Tesla Giveaway for free! Win a brand new Tesla Model 3, Model Y, Cybertruck, Model X, or Model S. Open to all US residents. No purchase necessary.">
-<meta name="keywords" content="Tesla giveaway, free Tesla, win a Tesla, Tesla Model 3, Tesla Model Y, Tesla Cybertruck, Tesla Model X, Tesla Model S, car giveaway, Sir J Company">
-<meta property="og:title" content="Upgrade Tesla Giveaway">
-<meta property="og:description" content="Enter for free to win a brand new Tesla! Choose from Model 3, Model Y, Cybertruck, Model X, or Model S. Open to all US residents.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sirjcompany.com/giveaway">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Upgrade Tesla Giveaway">
-<meta name="twitter:description" content="Enter for free to win a brand new Tesla! Choose from Model 3, Model Y, Cybertruck, Model X, or Model S.">
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
+with open('/mnt/agents/output/upgrade_tesla_giveaway.html', 'r') as f:
+    content = f.read()
 
-body {
-    background: #0a0a0a;
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+# Replace the old photo filenames with the new ones
+# Map: Model 3, Model Y, Cybertruck, Model X, Model S
+replacements = [
+    ('86F03AE3-23EC-4520-AB11-D0E5F22769EB.jpg', 'IMG_0255.jpeg'),
+    ('1130B9BF-9B7A-4F23-851F-423FF41BFDE3.jpg', 'IMG_0262.jpeg'),
+    ('43C44AB8-A57F-40F3-804A-6CE98BFAAA58.jpg', 'IMG_0267.jpeg'),
+    ('79787ECB-F314-4FD7-B933-5383C2F88458.jpg', 'IMG_0270.jpeg'),
+    ('1671B4F8-4402-490C-B29B-EDF4B6D823E4.jpg', 'IMG_0272.jpeg'),
+]
 
-/* Header */
-header {
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(233, 69, 96, 0.3);
-}
+for old, new in replacements:
+    content = content.replace(old, new)
 
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+with open('/mnt/agents/output/upgrade_tesla_giveaway.html', 'w') as f:
+    f.write(content)
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #e94560;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: #ffffff;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: #b8c5d6;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #e94560;
-}
-
-.mobile-menu {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 50%, #1a1a2e 100%);
-    padding: 140px 20px 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #e94560, #ff6b6b);
-    color: white;
-    padding: 10px 25px;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(233, 69, 96, 0.8); }
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #ffffff, #e94560, #ff6b6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: #b8c5d6;
-    max-width: 600px;
-    margin: 0 auto 30px;
-}
-
-/* Countdown Timer */
-.countdown-container {
-    margin: 40px 0;
-}
-
-.countdown-label {
-    color: #8892b0;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.countdown-item {
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid rgba(233, 69, 96, 0.3);
-    border-radius: 15px;
-    padding: 20px 25px;
-    min-width: 80px;
-    text-align: center;
-}
-
-.countdown-item .number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #e94560;
-    display: block;
-}
-
-.countdown-item .label {
-    font-size: 0.75rem;
-    color: #8892b0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.cta-btn {
-    display: inline-block;
-    padding: 18px 50px;
-    background: linear-gradient(135deg, #e94560, #ff6b6b);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-    margin-top: 30px;
-    box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
-}
-
-.cta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(233, 69, 96, 0.5);
-
-... [truncated for display] ...
-
-Total file size: 45,997 characters
-Total lines: 1,605
+print("✅ Photo filenames updated!")
+print("📁 New filenames in HTML:")
+for _, new in replacements:
+    print(f"   - {new}")
